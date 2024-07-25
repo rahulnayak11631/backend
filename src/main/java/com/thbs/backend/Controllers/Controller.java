@@ -240,7 +240,7 @@ public class Controller {
     public ResponseEntity<Object> getAllEventProviders() {
         List<EventProvider> eventProviders = eventProviderRepo.findAll();
         if (eventProviders.isEmpty()) {
-            return ResponseEntity.status(404).body("NO event provider found");
+            return ResponseEntity.status(404).body("NO event provider found!!!!!!");
         }
         else
         {
