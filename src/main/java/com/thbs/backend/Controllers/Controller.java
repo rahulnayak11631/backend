@@ -236,10 +236,16 @@ public class Controller {
         return coverImageUploadService.uploadCoverImageService(EPToken, event_id, images);
     }
 
-    @GetMapping("getalleventproviders")
-    public ResponseEntity<List<EventProvider>> getAllEventProviders() {
+  @GetMapping("getalleventproviders")
+    public ResponseEntity<Object> getAllEventProviders() {
         List<EventProvider> eventProviders = eventProviderRepo.findAll();
-        return new ResponseEntity<>(eventProviders, HttpStatus.OK);
+        if (eventProviders.isEmpty()) {
+            return ResponseEntity.status(404).body("NO event provider found!");
+        }
+        else
+        {
+            return ResponseEntity.status(200).body(eventProviders);
+        }
     }
 
     @GetMapping("getunapprovedeventproviders")
